@@ -21,7 +21,6 @@ function parseSeedString(seed) {
 function exportToTestData() {
   let vanillaSeeds = []
   let spacedOutSeeds = []
-  let frostyPlanetSeeds = []
 
   for(const cluster of mongoDBExport) {
     let parsedSeed = parseSeedString(cluster.coordinate)
@@ -40,12 +39,15 @@ function exportToTestData() {
       seed.expectedTraits.push(...asteroid.worldTraits)
     }
     
-    vanillaSeeds.push(seed)
+    if(cluster.asteroids.length == 1) {
+      vanillaSeeds.push(seed)
+    } else {
+      spacedOutSeeds.push(seed)
+    }
   }
 
-  fs.writeFileSync('vanillaSeeds.json', JSON.stringify(vanillaSeeds, null, 4));
-  // fs.writeFileSync('spacedOutSeeds.json', JSON.stringify(spacedOutSeeds, null, 4));
-  // fs.writeFileSync('frostyPlanetSeeds.json', JSON.stringify(frostyPlanetSeeds, null, 4));
+  fs.writeFileSync('../test/fixtures/vanillaSeeds.json', JSON.stringify(vanillaSeeds, null, 4));
+  fs.writeFileSync('../test/fixtures/spacedOutSeeds.json', JSON.stringify(spacedOutSeeds, null, 4));
 }
 
 exportToTestData()
