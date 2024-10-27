@@ -1,8 +1,8 @@
-const dlcClassicSeeds = [
+const spacedOutSeeds = [
   {
     coordinate: {
-      cluster: "M-BAD-C",
-      seed: "834286562",
+      cluster: "0",
+      seed: "0",
       gameSetting: "0",
       storyTrait: "0",
       mix: "0"
@@ -12,4 +12,4 @@ const dlcClassicSeeds = [
     ]
   }
 ]
-module.exports = dlcClassicSeeds;
+module.exports = spacedOutSeeds;

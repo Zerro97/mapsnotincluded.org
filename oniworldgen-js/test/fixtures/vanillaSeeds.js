@@ -1,5 +1,9 @@
 const vanillaSeeds = [
   {
+    cluster: {
+      name: "",
+      code: ""
+    },
     coordinate: {
       cluster: "0",
       seed: "0",

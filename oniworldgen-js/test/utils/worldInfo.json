@@ -1,0 +1,788 @@
+{
+  "Badlands": {
+    "name": "The Badlands",
+    "min": 2,
+    "max": 4
+  },
+  "BigEmpty": {
+    "name": "Big Empty FOR DEVS"
+  },
+  "ForestDefault": {
+    "name": "Arboria",
+    "min": 2,
+    "max": 4
+  },
+  "ForestHot": {
+    "name": "Aridio",
+    "min": 2,
+    "max": 4
+  },
+  "ForestLush": {
+    "name": "Verdante",
+    "min": 2,
+    "max": 4
+  },
+  "Helicona": {
+    "name": "Helicona",
+    "min": 2,
+    "max": 4
+  },
+  "Oasis": {
+    "name": "Oasisse",
+    "min": 2,
+    "max": 4
+  },
+  "Oceania": {
+    "name": "Oceania",
+    "min": 2,
+    "max": 4
+  },
+  "SandstoneDefault": {
+    "name": "Terra"
+  },
+  "SandstoneFrozen": {
+    "name": "Rime",
+    "min": 2,
+    "max": 4
+  },
+  "StrangeAsteroidKleiFest2023": {
+    "name": "Skewed Asteroid",
+    "specificTraits": [
+      "traits/Geodes"
+    ]
+  },
+  "TheRock": {
+    "name": "The Rock",
+    "min": 2,
+    "max": 4
+  },
+  "TinyEmpty": {
+    "name": "Tiny Empty FOR DEVS"
+  },
+  "TinySurface": {
+    "name": "Tiny Surface FOR DEVS"
+  },
+  "Volcanic": {
+    "name": "Volcanea",
+    "min": 2,
+    "max": 4
+  },
+  "ForestMoonlet": {
+    "name": "Folia Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/GeoDormant"
+    ],
+    "forbiddenTags": [
+      "Oil",
+      "NonStartWorld"
+    ]
+  },
+  "IdealLandingSite": {
+    "name": "Irradiated Forest Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Crust",
+      "Challenge",
+      "Core",
+      "GenericGeysers",
+      "StartChange",
+      "StartWorldOnly"
+    ]
+  },
+  "MarshyMoonlet": {
+    "name": "Marshy Asteroid",
+    "max": 1,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "traits/SlimeSplats",
+      "expansion1::traits/LushCore",
+      "expansion1::traits/MetalCaves"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Geodes",
+      "LargeWorld",
+      "Oil",
+      "GenericGeysers",
+      "StartChange"
+    ]
+  },
+  "MediumForestyRadioactiveVanillaWarpPlanet": {
+    "name": "Radioactive Forest Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Core",
+      "GenericGeysers"
+    ]
+  },
+  "MediumForestyWasteland": {
+    "name": "Glowood Wasteland Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Core",
+      "GenericGeysers"
+    ]
+  },
+  "MediumRadioactiveVanillaWarpPlanet": {
+    "name": "Radioactive Swamp Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Core",
+      "GenericGeysers"
+    ]
+  },
+  "MediumSandyRadioactiveVanillaWarpPlanet": {
+    "name": "Radioactive Terra Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Core",
+      "GenericGeysers"
+    ]
+  },
+  "MediumSandySwamp": {
+    "name": "Radioactive Terrabog Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Core",
+      "GenericGeysers",
+      "Surface"
+    ]
+  },
+  "MediumSwampy": {
+    "name": "Stinko Swamp Asteroid",
+    "min": 2,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Core",
+      "GenericGeysers"
+    ]
+  },
+  "MetalHeavyLandingSite": {
+    "name": "Irradiated Marsh Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Crust",
+      "Challenge",
+      "Core",
+      "GenericGeysers",
+      "StartChange"
+    ]
+  },
+  "MiniBadlands": {
+    "name": "The Desolands Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/IrregularOil"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "LargeWorld",
+      "Surface"
+    ]
+  },
+  "MiniBadlandsStart": {
+    "name": "The Desolands Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/IrregularOil"
+    ],
+    "forbiddenTags": [
+      "GenericGeysers",
+      "LargeWorld",
+      "Surface"
+    ]
+  },
+  "MiniBadlandsWarp": {
+    "name": "The Desolands Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/IrregularOil"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "LargeWorld",
+      "Surface"
+    ]
+  },
+  "MiniFlipped": {
+    "name": "Flipped Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/CrashedSatellites",
+      "expansion1::traits/Volcanoes"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "StartChange",
+      "Core",
+      "AboveCore",
+      "Surface",
+      "Crust"
+    ]
+  },
+  "MiniFlippedStart": {
+    "name": "Flipped Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/CrashedSatellites",
+      "traits/MisalignedStart",
+      "expansion1::traits/Volcanoes"
+    ],
+    "forbiddenTags": [
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "StartChange",
+      "Core",
+      "AboveCore",
+      "Surface",
+      "Crust"
+    ]
+  },
+  "MiniFlippedWarp": {
+    "name": "Flipped Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "expansion1::traits/CrashedSatellites",
+      "expansion1::traits/Volcanoes"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "StartChange",
+      "Core",
+      "AboveCore",
+      "Surface",
+      "Crust"
+    ]
+  },
+  "MiniForestFrozen": {
+    "name": "Frozen Forest Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "StartChange"
+    ]
+  },
+  "MiniForestFrozenStart": {
+    "name": "Frozen Forest Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface"
+    ]
+  },
+  "MiniForestFrozenWarp": {
+    "name": "Frozen Forest Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "StartChange"
+    ]
+  },
+  "MiniMetallicSwampy": {
+    "name": "Metallic Swampy Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "LargeWorld",
+      "Oil"
+    ]
+  },
+  "MiniMetallicSwampyStart": {
+    "name": "Metallic Swampy Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "GenericGeysers",
+      "LargeWorld",
+      "Oil"
+    ]
+  },
+  "MiniMetallicSwampyWarp": {
+    "name": "Metallic Swampy Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "LargeWorld",
+      "Oil"
+    ]
+  },
+  "MiniRadioactiveOcean": {
+    "name": "Radioactive Ocean Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "StartChange",
+      "AboveCore"
+    ]
+  },
+  "MiniRadioactiveOceanStart": {
+    "name": "Radioactive Ocean Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "StartChange",
+      "AboveCore"
+    ]
+  },
+  "MiniRadioactiveOceanWarp": {
+    "name": "Radioactive Ocean Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "StartChange",
+      "AboveCore"
+    ]
+  },
+  "MiniRegolithMoonlet": {
+    "name": "Regolith Asteroid"
+  },
+  "MooMoonlet": {
+    "name": "Moo Asteroid",
+    "max": 1,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "traits/SlimeSplats"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Surface",
+      "StartChange",
+      "Oil",
+      "Geodes",
+      "LargeWorld",
+      "Metal"
+    ]
+  },
+  "Moon_Barren": {
+    "name": "Barren Moon"
+  },
+  "NiobiumMoonlet": {
+    "name": "Superconductive Asteroid",
+    "max": 1,
+    "forbiddenTraits": [
+      "traits/SlimeSplats",
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "expansion1::traits/DistressSignal",
+      "expansion1::traits/CrashedSatellites",
+      "expansion1::traits/MetalCaves"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "StartChange",
+      "GenericGeysers",
+      "Surface",
+      "Crust",
+      "Geodes",
+      "LargeWorld"
+    ]
+  },
+  "OilRichWarpTarget": {
+    "name": "Rusty Oil Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "LargeWorld",
+      "Challenge",
+      "Surface",
+      "GenericGeysers"
+    ]
+  },
+  "OilyMoonlet": {
+    "name": "Viscosia Asteroid"
+  },
+  "RegolithMoonlet": {
+    "name": "Regolith Asteroid",
+    "max": 1,
+    "forbiddenTraits": [
+      "traits/SlimeSplats",
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "StartChange",
+      "GenericGeysers",
+      "Surface",
+      "Crust",
+      "Geodes",
+      "LargeWorld"
+    ]
+  },
+  "SmallRadioactiveLandingSite": {
+    "name": "Irradiated Forest Asteroid"
+  },
+  "SmallWarpOilySwamp": {
+    "name": "Oily Swamp Asteroid"
+  },
+  "SpaceshipInterior": {
+    "name": "STRINGS.WORLDS.SPACESHIPINTERIOR.NAME"
+  },
+  "StrangeAsteroidKleiFest2023Cluster": {
+    "name": "Skewed Asteroid",
+    "specificTraits": [
+      "traits/Geodes"
+    ]
+  },
+  "SulfurMoonlet": {
+    "name": "Brimstonia Asteroid"
+  },
+  "SwampMoonlet": {
+    "name": "Quagmiris Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/GeoDormant"
+    ],
+    "forbiddenTags": [
+      "Oil",
+      "NonStartWorld"
+    ]
+  },
+  "SwampyLandingSite": {
+    "name": "Irradiated Swampy Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "GenericGeysers",
+      "Oil",
+      "LargeWorld",
+      "Surface",
+      "Crust",
+      "Challenge",
+      "Core",
+      "StartChange"
+    ]
+  },
+  "TerraMoonlet": {
+    "name": "Terrania Asteroid"
+  },
+  "TinyForest": {
+    "name": "Tiny Forest FOR DEVS"
+  },
+  "TinyIce": {
+    "name": "Tiny Ice FOR DEVS"
+  },
+  "TinyMagma": {
+    "name": "Tiny Magma FOR DEVS"
+  },
+  "TinyStart": {
+    "name": "Tiny Start FOR DEVS"
+  },
+  "TundraMoonlet": {
+    "name": "Tundra Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "expansion1::traits/MetalCaves"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Geodes",
+      "Oil",
+      "GenericGeysers",
+      "StartChange",
+      "VeryCold",
+      "LargeWorld"
+    ]
+  },
+  "TwinMoonlet": {
+    "name": "Tiny Twin Asteroid FOR DEVS"
+  },
+  "VanillaArboria": {
+    "name": "Arboria Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaAridio": {
+    "name": "Aridio Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaBadlands": {
+    "name": "The Badlands Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaForestDefault": {
+    "name": "Verdante Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaOasis": {
+    "name": "Oasisse Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaOceania": {
+    "name": "Oceania Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaSandstoneDefault": {
+    "name": "Terra Asteroid"
+  },
+  "VanillaSandstoneFrozen": {
+    "name": "Rime Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaSwampDefault": {
+    "name": "Squelchy Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "VanillaVolcanic": {
+    "name": "Volcanea Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTags": [
+      "Surface",
+      "NonStartWorld"
+    ]
+  },
+  "WarpOilySwamp": {
+    "name": "Oily Swamp Asteroid",
+    "min": 1,
+    "max": 2,
+    "forbiddenTags": [
+      "GenericGeysers",
+      "StartWorldOnly",
+      "LargeWorld",
+      "Challenge"
+    ]
+  },
+  "WaterMoonlet": {
+    "name": "Water Asteroid",
+    "max": 1,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "traits/SlimeSplats"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Oil",
+      "StartChange",
+      "GenericGeysers",
+      "Surface",
+      "Geodes",
+      "LargeWorld",
+      "Crust"
+    ]
+  },
+  "CeresBaseGameAsteroid": {
+    "name": "Ceres",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/MagmaVents"
+    ],
+    "forbiddenTags": [
+      "Surface",
+      "Oil",
+      "NonStartWorld"
+    ]
+  },
+  "CeresBaseGameShatteredAsteroid": {
+    "name": "Blasted Ceres",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "traits/MisalignedStart"
+    ],
+    "forbiddenTags": [
+      "Surface",
+      "Oil",
+      "NonStartWorld",
+      "Core"
+    ]
+  },
+  "CeresClassicAsteroid": {
+    "name": "Ceres Asteroid",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/MagmaVents"
+    ],
+    "forbiddenTags": [
+      "Surface",
+      "Oil",
+      "NonStartWorld"
+    ]
+  },
+  "CeresClassicShatteredAsteroid": {
+    "name": "Blasted Ceres",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "traits/MisalignedStart"
+    ],
+    "forbiddenTags": [
+      "Surface",
+      "Oil",
+      "NonStartWorld",
+      "Core"
+    ]
+  },
+  "CeresSpacedOutAsteroid": {
+    "name": "Ceres Minor",
+    "min": 2,
+    "max": 4,
+    "forbiddenTraits": [
+      "traits/GeoDormant",
+      "traits/MagmaVents"
+    ],
+    "forbiddenTags": [
+      "Surface",
+      "Oil",
+      "NonStartWorld"
+    ]
+  },
+  "MixingCeresAsteroid": {
+    "name": "Ceres Fragment",
+    "max": 2,
+    "forbiddenTraits": [
+      "traits/MagmaVents",
+      "expansion1::traits/Volcanoes",
+      "expansion1::traits/MetalCaves"
+    ],
+    "forbiddenTags": [
+      "StartWorldOnly",
+      "Geodes",
+      "Oil",
+      "GenericGeysers",
+      "StartChange",
+      "VeryCold",
+      "LargeWorld",
+      "Surface"
+    ]
+  }
+}

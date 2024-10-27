@@ -1,8 +1,8 @@
-const dlcSeeds = [
+const frostyPlanetSeeds = [
   {
     coordinate: {
-      cluster: "0",
-      seed: "0",
+      cluster: "M-BAD-C",
+      seed: "834286562",
       gameSetting: "0",
       storyTrait: "0",
       mix: "0"
@@ -12,4 +12,4 @@ const dlcSeeds = [
     ]
   }
 ]
-module.exports = dlcSeeds;
+module.exports = frostyPlanetSeeds;

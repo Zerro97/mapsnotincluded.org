@@ -11,4 +11,4 @@ For detailed explanation of each part of the seed, you can refer to [wiki](https
 ## Asteroid Order in Spaced Out
 In Spaced Out DLC, there are multiple asteroids associated with one cluster, whereas in vanilla base game only one asteroid is associated with one cluster.
 
-In Spaced Out DLC, each of the asteroids have their own world traits. When generating traits from a seed, the order of asteroid in a cluster matters. Check out `asteroidOrder.json` for the ordering of the asteroids in a cluster
+In Spaced Out DLC, each of the asteroids have their own world traits. When generating traits from a seed, the order of asteroid in a cluster matters. Check out `utils/asteroidOrder.json` for the ordering of the asteroids in a cluster
