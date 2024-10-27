@@ -5,3 +5,7 @@ worldgens/expansion1/*
 worldgens/dlc2/*
 
 compiledTraits.json
+data.json
+scripts/vanillaSeeds.json
+scripts/spacedOutSeeds.json
+scripts/frostyPlanetSeeds.json
