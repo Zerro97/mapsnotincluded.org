@@ -1,0 +1,269 @@
+{
+  "vanilla": {
+    "Badlands": ["worlds/Badlands"],
+    "BigEmptyCluster": ["worlds/BigEmpty"],
+    "ForestDefault": ["worlds/ForestDefault"],
+    "ForestHot": ["worlds/ForestHot"],
+    "ForestLush": ["worlds/ForestLush"],
+    "KleiFest2023": ["worlds/StrangeAsteroidKleiFest2023"],
+    "Oasis": ["worlds/Oasis"],
+    "Oceania": ["worlds/Oceania"],
+    "SandstoneDefault": ["worlds/SandstoneDefault"],
+    "SandstoneFrozen": ["worlds/SandstoneFrozen"],
+    "TinyEmptyCluster": ["worlds/TinyEmpty"],
+    "TinySurface": ["worlds/TinySurface"],
+    "Volcanic": ["worlds/Volcanic"]
+  },
+  "spacedOut": {
+    "ForestStartCluster": [
+      "expansion1::worlds/ForestMoonlet",
+      "expansion1::worlds/SwampyLandingSite",
+      "expansion1::worlds/OilRichWarpTarget",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "KleiFest2023Cluster": [
+      "expansion1::worlds/StrangeAsteroidKleiFest2023Cluster",
+      "expansion1::worlds/MediumRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "MiniClusterBadlandsStart": [
+      "expansion1::worlds/MiniBadlandsStart",
+      "expansion1::worlds/MiniRadioactiveOceanWarp",
+      "expansion1::worlds/MiniMetallicSwampy",
+      "expansion1::worlds/MiniForestFrozen",
+      "expansion1::worlds/MiniFlipped",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "MiniClusterFlippedStart": [
+      "expansion1::worlds/MiniBadlandsWarp",
+      "expansion1::worlds/MiniFlippedStart",
+      "expansion1::worlds/MiniMetallicSwampy",
+      "expansion1::worlds/MiniForestFrozen",
+      "expansion1::worlds/MiniRadioactiveOcean",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "MiniClusterForestFrozenStart": [
+      "expansion1::worlds/MiniBadlandsWarp",
+      "expansion1::worlds/MiniForestFrozenStart",
+      "expansion1::worlds/MiniMetallicSwampy",
+      "expansion1::worlds/MiniFlipped",
+      "expansion1::worlds/MiniRadioactiveOcean",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "MiniClusterMetallicSwampyStart": [
+      "expansion1::worlds/MiniBadlands",
+      "expansion1::worlds/MiniMetallicSwampyStart",
+      "expansion1::worlds/MiniForestFrozenWarp",
+      "expansion1::worlds/MiniFlipped",
+      "expansion1::worlds/MiniRadioactiveOcean",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "MiniClusterRadioactiveOceanStart": [
+      "expansion1::worlds/MiniBadlands",
+      "expansion1::worlds/MiniRadioactiveOceanStart",
+      "expansion1::worlds/MiniFlippedWarp",
+      "expansion1::worlds/MiniMetallicSwampy",
+      "expansion1::worlds/MiniForestFrozen",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "SandstoneStartCluster": [
+      "expansion1::worlds/TerraMoonlet",
+      "expansion1::worlds/IdealLandingSite",
+      "expansion1::worlds/WarpOilySwamp",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "SwampStartCluster": [
+      "expansion1::worlds/SwampMoonlet",
+      "expansion1::worlds/MetalHeavyLandingSite",
+      "expansion1::worlds/OilRichWarpTarget",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ],
+    "TinyStartCluster": [
+      "expansion1::worlds/TinyStart"
+    ],
+    "VanillaArboriaCluster": [
+      "expansion1::worlds/VanillaArboria",
+      "expansion1::worlds/MediumSandyRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaAridioCluster": [
+      "expansion1::worlds/VanillaAridio",
+      "expansion1::worlds/MediumSandySwamp",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaBadlandsCluster": [
+      "expansion1::worlds/VanillaBadlands",
+      "expansion1::worlds/MediumRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaForestCluster": [
+      "expansion1::worlds/VanillaForestDefault",
+      "expansion1::worlds/MediumSandyRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaOasisCluster": [
+      "expansion1::worlds/VanillaOasis",
+      "expansion1::worlds/MediumRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaOceaniaCluster": [
+      "expansion1::worlds/VanillaOceania",
+      "expansion1::worlds/MediumForestyWasteland",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaSandstoneCluster": [
+      "expansion1::worlds/VanillaSandstoneDefault",
+      "expansion1::worlds/MediumRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaSandstoneFrozenCluster": [
+      "expansion1::worlds/VanillaSandstoneFrozen",
+      "expansion1::worlds/MediumSwampy",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaSwampCluster": [
+      "expansion1::worlds/VanillaSwampDefault",
+      "expansion1::worlds/MediumForestyRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "VanillaVolcanicCluster": [
+      "expansion1::worlds/VanillaVolcanic",
+      "expansion1::worlds/MediumRadioactiveVanillaWarpPlanet",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ]
+  },
+  "frostyPlanet": {
+    "CeresBaseGameCluster": [
+      "dlc2::worlds/CeresBaseGameAsteroid"
+    ],
+    "CeresBaseGameShatteredCluster": [
+      "dlc2::worlds/CeresBaseGameShatteredAsteroid"
+    ],
+    "CeresClassicCluster": [
+      "dlc2::worlds/CeresClassicAsteroid",
+      "expansion1::worlds/MediumSwampy",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "CeresClassicShatteredCluster": [
+      "dlc2::worlds/CeresClassicShatteredAsteroid",
+      "expansion1::worlds/MediumSwampy",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/MiniRegolithMoonlet"
+    ],
+    "CeresSpacedOutCluster": [
+      "dlc2::worlds/CeresSpacedOutAsteroid",
+      "expansion1::worlds/SwampyLandingSite",
+      "expansion1::worlds/OilRichWarpTarget",
+      "expansion1::worlds/TundraMoonlet",
+      "expansion1::worlds/MarshyMoonlet",
+      "expansion1::worlds/MooMoonlet",
+      "expansion1::worlds/WaterMoonlet",
+      "expansion1::worlds/NiobiumMoonlet",
+      "expansion1::worlds/RegolithMoonlet"
+    ]
+  }
+}
