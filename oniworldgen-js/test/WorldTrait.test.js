@@ -22,7 +22,6 @@ describe("WorldTrait", function () {
     });
   });
 
-
   describe("SpacedOut - FRST-C-1824076888-0-D3-DH", function() {
     const seed = 1824076888;
     let clusterInfo = SettingsCache.getCluster("ForestStartCluster");
