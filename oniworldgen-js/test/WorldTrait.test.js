@@ -1,11 +1,22 @@
-// TODO Implement actual test logic
+const assert = require("assert");
 const SettingsCache = require("../oni/SettingsCache.js");
-
 SettingsCache.initData(require("../compiledTraits.json"));
 
 let world = SettingsCache.getWorld("MediumRadioactiveVanillaWarpPlanet");
 
-const assert = require("assert");
+describe("getRandomTraits()", () => {
+  it("should generate matching world traits given a vanilla seed and a world", () => {
+
+  })
+
+  it("should generate matching world traits given a spacedOut seed and a world", () => {
+
+  })
+
+  it("should generate matching world traits given a spacedOut seed and list of worlds", () => {
+
+  })
+})
 
 describe("WorldTrait", function () {
   describe("Generate World MediumRadioactiveVanillaWarpPlanet)", function () {
