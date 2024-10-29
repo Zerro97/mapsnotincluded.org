@@ -11,6 +11,7 @@
   "description": "A simple library that mimics some basic functionality of ONI world generation",
   "dependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
+    "gettext-parser": "^8.0.0",
     "yaml": "^2.6.0"
   },
   "devDependencies": {
