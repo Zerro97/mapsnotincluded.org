@@ -1,6 +1,12 @@
 const fs = require('fs');
 const mongoDBExport = require("../data.json");
 
+/**
+ * Parse seed string into individual parts 
+ * 
+ * @param {string} seed Example: "CER-A-487061744-0-0-0"
+ * @returns Parsed object containing seed parts (cluster, seed, game setting, story trait, mix)
+ */
 function parseSeedString(seed) {
   // Split the string by dashes
   let parts = seed.split('-');
