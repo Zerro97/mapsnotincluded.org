@@ -16,7 +16,6 @@ function compileYamlToJson() {
     for (let worldgenPath of worldgenPaths) {
         const traitsPath = `${worldgenPath.path}\\traits`;
         data[worldgenPath.id] = { traits: {}};
-
         if (fs.existsSync(traitsPath)) {
             const files = fs.readdirSync(traitsPath);
             for (let file of files) {
