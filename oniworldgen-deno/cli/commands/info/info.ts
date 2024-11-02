@@ -28,6 +28,7 @@ export const infoCommand = new Command()
   .option(
     "-l, --level <level:integer>",
     "For selecting depth of yaml/json file",
+    { default: 1 }
   )
   .option(
     "-c, --count",
@@ -36,4 +37,5 @@ export const infoCommand = new Command()
   .option(
     "-f, --filter <name: filter>",
     "For filtering the data",
+    { default: "all" }
   )
