@@ -7,7 +7,7 @@ import { traitPath } from "/cli/utils/path.ts"
 import { parse } from "@std/yaml";
 
 const filterOption = new EnumType(["all", "cluster", "placement", "trait", "world"]);
-const displayOption = new EnumType(["key", "count"]);
+const displayOption = new EnumType(["key"]);
 
 async function parseYaml(): Promise<GameData> {
   const emptyData: TraitData = {
@@ -74,11 +74,6 @@ function displayUniqueKeys(data: GameData) {
   console.log(getUniqueKeySet(data))
 }
 
-
-function displayDataCount(data: GameData) {
-  console.log(data)
-}
-
 export const parseGameCommand = new Command()
   .name("export")
   .description("Parse oni yaml files and output to console")
@@ -97,10 +92,6 @@ export const parseGameCommand = new Command()
   .option(
     "-l, --level <level:integer>",
     "For selecting depth of yaml/json file",
-  )
-  .option(
-    "-c, --count",
-    "For counting number of matching data",
   )
   .option(
     "-f, --filter <name:filter>",
@@ -124,10 +115,6 @@ export const parseGameCommand = new Command()
       switch(options.display) {
         case "key": {
           displayUniqueKeys(data)
-          break
-        }
-        case "count": {
-          displayDataCount(data)
           break
         }
       }
