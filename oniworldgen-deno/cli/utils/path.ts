@@ -16,9 +16,8 @@ switch (OS) {
     throw new Error("Unsupported operating system");
 }
 
-export const traitPath = {
+export const traitPath: GamePath = {
   vanilla: { path: `${assetDir}/worldgen/traits` },
   spacedOut: { path: `${assetDir}/dlc/expansion1/worldgen/traits` },
   frostyPlanet: { path: `${assetDir}/dlc/dlc2/worldgen/traits` },
 }
-

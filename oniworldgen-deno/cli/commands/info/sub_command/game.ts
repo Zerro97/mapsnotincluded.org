@@ -1,55 +1,65 @@
 import type { GameData } from "/cli/types/game_data.d.ts";
-
-import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
-import { parse, stringify } from "@std/yaml";
-import { traitPath } from "/cli/utils/path.ts"
 import type { TraitData } from "/cli/types/trait_data.d.ts";
 
-async function parseYaml() {
+import { Command, EnumType, ValidationError } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
+import { Entries } from "https://deno.land/x/fest/mod.ts";
+import { traitPath } from "/cli/utils/path.ts"
+import { parse } from "@std/yaml";
+
+const filter = new EnumType(["all", "cluster", "placement", "trait", "world"]);
+
+async function parseYaml(): Promise<GameData> {
+  const emptyData: TraitData = {
+    name: "",
+    description: "",
+    colorHex: "",
+    exclusiveWith: [],
+    traitTags: [],
+  }
   const gameData: GameData = {
-    vanilla: {},
-    spacedOut: {},
-    frostyPlanet: {},
+    vanilla: emptyData,
+    spacedOut: emptyData,
+    frostyPlanet: emptyData,
   };
-  const keyValues: Record<string, string> = {}
 
   // Loop through vanilla, spacedOut, frostyPlanet folders
-  for (const [dlcType, gamePath] of Object.entries(traitPath)) {
+  for (const [dlcType, gamePath] of Object.entries(traitPath) as Entries<typeof traitPath>) {
     try {
       // Loop through files in directory
       const directory = Deno.readDir(gamePath.path)
       for await (const entry of directory) {
         const filePath = `${gamePath.path}/${entry.name}`;
         const yamlFile = await Deno.readTextFile(filePath);
-        const content = parse(yamlFile) as TraitData
-        
-        if(content.additionalSubworldFiles) {
-          for(const [key, value] of Object.entries(content.additionalSubworldFiles)) {
-            console.log(value)
-            // for(const [key1, value1] of Object.entries(value.additionalSubworldFiles)) {
-            //   keyValues[key1] = typeof(value1)
-            // }
-          }
-        }
-        // Assign parsed yaml file to GameData object
-        // gameData[dlcType] = content;
+        gameData[dlcType] = parse(yamlFile) as TraitData
       }
     } catch(error) {
       if (error instanceof Deno.errors.NotFound) {
         continue
       } else {
         console.error(error)
-        return
+        Deno.exit()
       }
     }
   }
 
-  console.log(keyValues)
-
   return gameData;
 }
 
-const filter = new EnumType(["all", "cluster", "placement", "trait", "world"]);
+function filterData(data: GameData): GameData {
+  return data
+}
+
+function selectLevel(data: GameData): GameData {
+  return data
+}
+
+function displayUniqueKeys(data: GameData) {
+  console.log(data)
+}
+
+function displayDataCount(data: GameData) {
+  console.log(data)
+}
 
 export const parseGameCommand = new Command()
   .name("export")
@@ -68,7 +78,6 @@ export const parseGameCommand = new Command()
   .option(
     "-l, --level <level:integer>",
     "For selecting depth of yaml/json file",
-    { default: 1 }
   )
   .option(
     "-c, --count",
@@ -79,8 +88,29 @@ export const parseGameCommand = new Command()
     "For filtering the data",
     { default: "all" }
   )
-  .action((options) => {
-    console.log(options)
-    // parseYaml()
-    // generateJson()
+  .action(async (options) => {
+    // Check for options that shouldn't be possible to exist together
+    if(options.count && options.key) {
+      throw new ValidationError("You cannot specify --count and --key options together");
+    }
+
+    // Parse yaml file
+    let data = await parseYaml()
+
+    // Filter parsed data
+    if(options.filter) {
+      data = filterData(data)
+    }
+    if(options.level) {
+      data = selectLevel(data)
+    }
+    
+    // Display data
+    if(options.key) {
+      displayUniqueKeys(data)
+    } else if(options.count) {
+      displayDataCount(data)
+    } else {
+      console.log(data)
+    }
   })
