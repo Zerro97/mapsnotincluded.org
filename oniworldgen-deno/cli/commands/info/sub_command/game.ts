@@ -1,12 +1,13 @@
 import type { GameData } from "/cli/types/game_data.d.ts";
 import type { TraitData } from "/cli/types/trait_data.d.ts";
 
-import { Command, EnumType, ValidationError } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
+import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 import { Entries } from "https://deno.land/x/fest/mod.ts";
 import { traitPath } from "/cli/utils/path.ts"
 import { parse } from "@std/yaml";
 
-const filter = new EnumType(["all", "cluster", "placement", "trait", "world"]);
+const filterOption = new EnumType(["all", "cluster", "placement", "trait", "world"]);
+const displayOption = new EnumType(["key", "count"]);
 
 async function parseYaml(): Promise<GameData> {
   const emptyData: TraitData = {
@@ -65,11 +66,12 @@ export const parseGameCommand = new Command()
   .name("export")
   .description("Parse oni yaml files and output to console")
   // For registering enum type for option
-  .type("filter", filter)
+  .type("filter", filterOption)
+  .type("display", displayOption)
   // Options that are applicable for all sub commands
   .option(
-    "-k, --key",
-    "Output json containing unique set of key strings",
+    "-d, --display <name:display>",
+    "Determine display format",
   )
   .option(
     "-t, --test",
@@ -84,16 +86,11 @@ export const parseGameCommand = new Command()
     "For counting number of matching data",
   )
   .option(
-    "-f, --filter <name: filter>",
+    "-f, --filter <name:filter>",
     "For filtering the data",
     { default: "all" }
   )
   .action(async (options) => {
-    // Check for options that shouldn't be possible to exist together
-    if(options.count && options.key) {
-      throw new ValidationError("You cannot specify --count and --key options together");
-    }
-
     // Parse yaml file
     let data = await parseYaml()
 
@@ -106,10 +103,17 @@ export const parseGameCommand = new Command()
     }
     
     // Display data
-    if(options.key) {
-      displayUniqueKeys(data)
-    } else if(options.count) {
-      displayDataCount(data)
+    if(options.display) {
+      switch(options.display) {
+        case "key": {
+          displayUniqueKeys(data)
+          break
+        }
+        case "count": {
+          displayDataCount(data)
+          break
+        }
+      }
     } else {
       console.log(data)
     }
