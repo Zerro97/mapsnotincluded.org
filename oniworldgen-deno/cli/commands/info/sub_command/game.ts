@@ -6,8 +6,15 @@ import { Entries } from "https://deno.land/x/fest/mod.ts";
 import { traitPath } from "/cli/utils/path.ts"
 import { parse } from "@std/yaml";
 
-const filterOption = new EnumType(["all", "cluster", "placement", "trait", "world"]);
-const displayOption = new EnumType(["key"]);
+const FILTER_OPTION = ["all", "cluster", "placement", "trait", "world"] as const;
+type FilterTuple = typeof FILTER_OPTION;
+type FilterType = FilterTuple[number];
+const filterOption = new EnumType(FILTER_OPTION);
+
+const DISPLAY_OPTION = ["key"] as const;
+type DisplayTuple = typeof DISPLAY_OPTION;
+type DisplayType = DisplayTuple[number];
+const displayOption = new EnumType(DISPLAY_OPTION);
 
 async function parseYaml(): Promise<GameData> {
   const emptyData: TraitData = {
@@ -46,7 +53,7 @@ async function parseYaml(): Promise<GameData> {
   return gameData;
 }
 
-function filterData(data: GameData): GameData {
+function filterData(data: GameData, filter: FilterType): GameData {
   return data
 }
 
@@ -104,7 +111,7 @@ export const parseGameCommand = new Command()
 
     // Filter parsed data
     if(options.filter) {
-      data = filterData(data)
+      data = filterData(data, options.filter)
     }
     if(options.level) {
       data = selectLevel(data)
