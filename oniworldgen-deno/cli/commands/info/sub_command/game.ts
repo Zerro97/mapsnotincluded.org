@@ -54,9 +54,26 @@ function selectLevel(data: GameData): GameData {
   return data
 }
 
-function displayUniqueKeys(data: GameData) {
-  console.log(data)
+function getUniqueKeySet(obj: any): any {
+  if (Array.isArray(obj)) {
+    // Process arrays by mapping over elements and showing types
+    return obj.length > 0 ? [getUniqueKeySet(obj[0])] : [];
+  } else if (typeof obj === "object" && obj !== null) {
+    // Process objects by mapping values to keys
+    const uniqueKeys: { [key: string]: any } = {};
+    for (const key in obj) {
+      uniqueKeys[key] = getUniqueKeySet(obj[key]);
+    }
+    return uniqueKeys;
+  }
+  // For non-objects and non-arrays, return the type of the value
+  return typeof obj;
 }
+
+function displayUniqueKeys(data: GameData) {
+  console.log(getUniqueKeySet(data))
+}
+
 
 function displayDataCount(data: GameData) {
   console.log(data)
