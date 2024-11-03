@@ -1,7 +1,7 @@
 {
   "tasks": {
     "lib": "deno run lib/main.ts",
-    "cli": "deno run --allow-read cli/main.ts"
+    "cli": "deno run --allow-read --allow-env cli/main.ts"
   },
   "imports": {
     "/": "./",
