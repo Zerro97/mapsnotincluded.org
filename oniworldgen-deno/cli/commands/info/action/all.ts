@@ -2,7 +2,7 @@ import type { GameData } from "/cli/types/game_data.d.ts";
 
 import { Command } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 import { parse, stringify } from "@std/yaml";
-import gamePaths from "/cli/utils/game_path.ts"
+import gamePaths from "../../../utils/path.ts"
 import type { TraitData } from "/cli/types/trait_data.d.ts";
 
 async function parseYaml() {

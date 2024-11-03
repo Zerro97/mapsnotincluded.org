@@ -1,15 +1,12 @@
 import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
-import { parseAllCommand } from "./action/all.ts";
-import { parseClusterCommand } from "./action/cluster.ts";
-import { parsePlacementCommand } from "./action/placement.ts";
-import { parseTraitCommand } from "./action/trait.ts";
-import { parseWorldCommand } from "./action/world.ts";
+import { parseExportCommand } from "./sub_command/export.ts";
+import { parseGameCommand } from "./sub_command/game.ts";
 
 const filter = new EnumType(["all", "cluster", "placement", "trait", "world"]);
 
 export const parseCommand = new Command()
   .name("parse")
-  .description("Parse either mongoDB export or oni yaml files and output on console")
+  .description("Parse either mongoDB export or oni yaml files and generate json file")
   .action(function () {
     // If no arguments or options are provided, show help
     this.showHelp();
@@ -39,8 +36,5 @@ export const parseCommand = new Command()
     "For filtering the data",
     { default: "all" }
   )
-  .command("all", parseAllCommand)
-  .command("trait", parseTraitCommand)
-  .command("world", parseWorldCommand)
-  .command("cluster", parseClusterCommand)
-  .command("placement", parsePlacementCommand);
+  .command("game", parseGameCommand)
+  .command("export", parseExportCommand)
