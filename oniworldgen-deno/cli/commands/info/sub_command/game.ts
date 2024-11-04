@@ -118,7 +118,7 @@ function displayUniqueKeys(data: GameData) {
   console.log(getUniqueKeySet(data))
 }
 
-export const parseGameCommand = new Command()
+export const gameSubCommand = new Command()
   .name("export")
   .description("Parse oni yaml files and output to console")
   // For registering enum type for option
