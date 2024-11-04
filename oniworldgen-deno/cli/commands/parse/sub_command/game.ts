@@ -119,8 +119,11 @@ function getUniqueKeySet(obj: object): object | string {
   return typeof obj;
 }
 
-function displayUniqueKeys(data: GameData) {
-  console.log(getUniqueKeySet(data))
+async function generateUniqueKeys(data: GameData) {
+  const uniqueKeys = getUniqueKeySet(data)
+   // Convert object to JSON string with indentation
+  const jsonString = JSON.stringify(uniqueKeys, null, 2);
+  await Deno.writeTextFile("./data_game_keys.json", jsonString);
 }
 
 export const gameSubCommand = new Command()
@@ -163,11 +166,13 @@ export const gameSubCommand = new Command()
     if(options.display) {
       switch(options.display) {
         case "key": {
-          displayUniqueKeys(data)
+          generateUniqueKeys(data)
           break
         }
       }
     } else {
-      console.log(data)
+      // Convert object to JSON string with indentation
+      const jsonString = JSON.stringify(data, null, 2);
+      await Deno.writeTextFile("./data_game.json", jsonString);
     }
   })
