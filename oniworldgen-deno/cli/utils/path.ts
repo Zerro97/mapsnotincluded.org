@@ -1,4 +1,4 @@
-import type { GameData, GamePath } from "/cli/types/game_data.d.ts";
+import type { GamePath, Path } from "/cli/types/game_data.d.ts";
 
 const OS = Deno.build.os;
 let assetDir: string;
@@ -16,8 +16,26 @@ switch (OS) {
     throw new Error("Unsupported operating system");
 }
 
-export const traitPath: GamePath = {
+export const traitPath: Path = {
   vanilla: { path: `${assetDir}/worldgen/traits` },
   spacedOut: { path: `${assetDir}/dlc/expansion1/worldgen/traits` },
   frostyPlanet: { path: `${assetDir}/dlc/dlc2/worldgen/traits` },
+}
+
+export const worldPath: Path = {
+  vanilla: { path: `${assetDir}/worldgen/worlds` },
+  spacedOut: { path: `${assetDir}/dlc/expansion1/worldgen/worlds` },
+  frostyPlanet: { path: `${assetDir}/dlc/dlc2/worldgen/worlds` },
+}
+
+export const clusterPath: Path = {
+  vanilla: { path: `${assetDir}/worldgen/clusters` },
+  spacedOut: { path: `${assetDir}/dlc/expansion1/worldgen/clusters` },
+  frostyPlanet: { path: `${assetDir}/dlc/dlc2/worldgen/clusters` },
+}
+
+export const gamePath: GamePath = {
+  trait: traitPath,
+  world: worldPath,
+  cluster: clusterPath,
 }
