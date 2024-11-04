@@ -127,13 +127,12 @@ async function generateUniqueKeys(data: GameData) {
 }
 
 export const gameSubCommand = new Command()
-  .name("export")
+  .name("game")
   .description("Parse oni yaml files and generate json file")
   // For registering enum type for option
   .type("dlc", dlcOption)
   .type("asset", assetTypeOption)
   .type("display", displayOption)
-  // Options that are applicable for all sub commands
   .option(
     "-d, --display <name:display>",
     "Determine display format",
@@ -147,6 +146,7 @@ export const gameSubCommand = new Command()
     "For filtering by asset type",
   )
   .option(
+    // TODO!
     "-t, --test",
     "Output json useful for testing",
   )
