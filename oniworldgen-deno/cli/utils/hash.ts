@@ -8,5 +8,5 @@ export default function hash(str: string) {
   }
 
   // Return as an unsigned 32-bit integer
-  return hash >>> 0; 
+  return hash >>> 0;
 }

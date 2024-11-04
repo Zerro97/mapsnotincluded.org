@@ -10,4 +10,4 @@ export const generateCommand = new Command()
     this.showHelp();
   })
   .command("seed", seedSubCommand)
-  .command("trait", traitSubCommand)
+  .command("trait", traitSubCommand);

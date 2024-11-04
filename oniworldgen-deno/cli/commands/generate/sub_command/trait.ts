@@ -12,5 +12,4 @@ export const traitSubCommand = new Command()
     "Output json useful for testing",
   )
   .action(async (options) => {
-    
-  })
+  });

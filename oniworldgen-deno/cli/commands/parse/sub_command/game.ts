@@ -3,9 +3,12 @@ import type { TraitData } from "/cli/types/trait_data.d.ts";
 import type { ClusterData } from "/cli/types/cluster_data.d.ts";
 import type { WorldData } from "/cli/types/world_data.d.ts";
 
-import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
+import {
+  Command,
+  EnumType,
+} from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 import { Entries } from "https://deno.land/x/fest/mod.ts";
-import { gamePath } from "/cli/utils/path.ts"
+import { gamePath } from "/cli/utils/path.ts";
 import { parse } from "@std/yaml";
 
 const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
@@ -25,53 +28,76 @@ const displayOption = new EnumType(DISPLAY_OPTION);
 
 async function parseYaml(): Promise<GameData> {
   const gameData: GameData = {
-    cluster: {vanilla: [] as ClusterData[], spacedOut: [] as ClusterData[], frostyPlanet: [] as ClusterData[]},
-    world: {vanilla: [] as WorldData[], spacedOut: [] as WorldData[], frostyPlanet: [] as WorldData[]},
-    trait: {vanilla: [] as TraitData[], spacedOut: [] as TraitData[], frostyPlanet: [] as TraitData[]},
+    cluster: {
+      vanilla: [] as ClusterData[],
+      spacedOut: [] as ClusterData[],
+      frostyPlanet: [] as ClusterData[],
+    },
+    world: {
+      vanilla: [] as WorldData[],
+      spacedOut: [] as WorldData[],
+      frostyPlanet: [] as WorldData[],
+    },
+    trait: {
+      vanilla: [] as TraitData[],
+      spacedOut: [] as TraitData[],
+      frostyPlanet: [] as TraitData[],
+    },
   };
 
   // Loop through world, trait, cluster
-  for (const [infoType, outerPath] of Object.entries(gamePath) as Entries<typeof gamePath>) {
+  for (
+    const [infoType, outerPath] of Object.entries(gamePath) as Entries<
+      typeof gamePath
+    >
+  ) {
     // Loop through vanilla, spacedOut, frostyPlanet
-    for(const [dlcType, innerPath] of Object.entries(outerPath) as Entries<typeof outerPath>) {
+    for (
+      const [dlcType, innerPath] of Object.entries(outerPath) as Entries<
+        typeof outerPath
+      >
+    ) {
       try {
         // Loop through files in directory
         for await (const entry of Deno.readDir(innerPath.path)) {
           // Read yaml file
           const filePath = `${innerPath.path}/${entry.name}`;
           const yamlFile = await Deno.readTextFile(filePath);
-  
+
           try {
             // Assign parsed yaml
             switch (infoType) {
-              case 'trait':
+              case "trait":
                 gameData.trait[dlcType].push(parse(yamlFile) as TraitData);
                 break;
-              case 'world':
+              case "world":
                 gameData.world[dlcType].push(parse(yamlFile) as WorldData);
                 break;
-              case 'cluster':
+              case "cluster":
                 gameData.cluster[dlcType].push(parse(yamlFile) as ClusterData);
                 break;
             }
-          } catch(error) {
+          } catch (error) {
             // Some yaml files contain duplicate keys causing parsing error
-            if (error instanceof SyntaxError && error.message.includes("duplicated key")) {
+            if (
+              error instanceof SyntaxError &&
+              error.message.includes("duplicated key")
+            ) {
               console.error("Error: YAML file contains duplicate keys.");
-              continue
+              continue;
             } else {
-              console.error(error)
-              Deno.exit()
+              console.error(error);
+              Deno.exit();
             }
           }
         }
-      } catch(error) {
+      } catch (error) {
         if (error instanceof Deno.errors.NotFound) {
-          console.error("Error: file not found from specified file path")
-          continue
+          console.error("Error: file not found from specified file path");
+          continue;
         } else {
-          console.error(error)
-          Deno.exit()
+          console.error(error);
+          Deno.exit();
         }
       }
     }
@@ -87,7 +113,7 @@ function filterByAsset(data: GameData, asset: AssetType): GameData {
     }
   }
 
-  return data
+  return data;
 }
 
 function filterByDlc(data: GameData, dlc: DlcType): GameData {
@@ -99,8 +125,8 @@ function filterByDlc(data: GameData, dlc: DlcType): GameData {
       }
     }
   }
-  
-  return data
+
+  return data;
 }
 
 function getUniqueKeySet(obj: object): object | string {
@@ -120,8 +146,8 @@ function getUniqueKeySet(obj: object): object | string {
 }
 
 async function generateUniqueKeys(data: GameData) {
-  const uniqueKeys = getUniqueKeySet(data)
-   // Convert object to JSON string with indentation
+  const uniqueKeys = getUniqueKeySet(data);
+  // Convert object to JSON string with indentation
   const jsonString = JSON.stringify(uniqueKeys, null, 2);
   await Deno.writeTextFile("./data_game_keys.json", jsonString);
 }
@@ -152,22 +178,22 @@ export const gameSubCommand = new Command()
   )
   .action(async (options) => {
     // Parse yaml file
-    let data = await parseYaml()
+    let data = await parseYaml();
 
     // Filter parsed data
-    if(options.dlc) {
-      data = filterByDlc(data, options.dlc)
+    if (options.dlc) {
+      data = filterByDlc(data, options.dlc);
     }
-    if(options.asset) {
-      data = filterByAsset(data, options.asset)
+    if (options.asset) {
+      data = filterByAsset(data, options.asset);
     }
-    
+
     // Display data
-    if(options.display) {
-      switch(options.display) {
+    if (options.display) {
+      switch (options.display) {
         case "key": {
-          generateUniqueKeys(data)
-          break
+          generateUniqueKeys(data);
+          break;
         }
       }
     } else {
@@ -175,4 +201,4 @@ export const gameSubCommand = new Command()
       const jsonString = JSON.stringify(data, null, 2);
       await Deno.writeTextFile("./data_game.json", jsonString);
     }
-  })
+  });

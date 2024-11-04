@@ -12,5 +12,4 @@ export const seedSubCommand = new Command()
     "Output json useful for testing",
   )
   .action(async (options) => {
-    
-  })
+  });

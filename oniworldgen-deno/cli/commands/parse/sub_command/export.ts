@@ -4,5 +4,4 @@ export const exportSubCommand = new Command()
   .name("export")
   .description("Parse mongoDB export data and generate json file")
   .action(() => {
-
-  })
+  });
