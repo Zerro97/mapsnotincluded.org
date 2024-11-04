@@ -151,10 +151,6 @@ export const gameSubCommand = new Command()
     "-t, --test",
     "Output json useful for testing",
   )
-  .option(
-    "-l, --level <level:integer>",
-    "For selecting depth of yaml/json file",
-  )
   .action(async (options) => {
     // Parse yaml file
     let data = await parseYaml()
@@ -165,9 +161,6 @@ export const gameSubCommand = new Command()
     }
     if(options.asset) {
       data = filterByAsset(data, options.asset)
-    }
-    if(options.level) {
-      data = selectLevel(data)
     }
     
     // Display data
