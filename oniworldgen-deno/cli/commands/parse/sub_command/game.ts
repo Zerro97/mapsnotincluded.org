@@ -81,15 +81,9 @@ async function parseYaml(): Promise<GameData> {
 }
 
 function filterByAsset(data: GameData, asset: AssetType): GameData {
-  switch(asset) {
-    case "trait": {
-      break
-    }
-    case "world": {
-      break
-    }
-    case "cluster": {
-      break
+  for (const key in data) {
+    if (key !== asset) {
+      data[key as AssetType] = { vanilla: [], spacedOut: [], frostyPlanet: [] };
     }
   }
 
@@ -97,18 +91,15 @@ function filterByAsset(data: GameData, asset: AssetType): GameData {
 }
 
 function filterByDlc(data: GameData, dlc: DlcType): GameData {
-  switch(dlc) {
-    case "vanilla": {
-      break
-    }
-    case "spacedOut": {
-      break
-    }
-    case "frostyPlanet": {
-      break
+  for (const key in data) {
+    for (const dlcKey in data[key as keyof GameData]) {
+      if (dlcKey !== dlc) {
+        // Clear out the non-matching DLC types by setting them to empty arrays
+        data[key as keyof GameData][dlcKey as DlcType] = [];
+      }
     }
   }
-
+  
   return data
 }
 
