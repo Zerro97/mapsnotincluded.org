@@ -1,17 +1,22 @@
-import type { GameData, InfoTypeMap } from "/cli/types/game_data.d.ts";
+import type { GameData } from "/cli/types/game_data.d.ts";
 import type { TraitData } from "/cli/types/trait_data.d.ts";
 import type { ClusterData } from "/cli/types/cluster_data.d.ts";
 import type { WorldData } from "/cli/types/world_data.d.ts";
 
 import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
-import { Entries, ValueOf } from "https://deno.land/x/fest/mod.ts";
+import { Entries } from "https://deno.land/x/fest/mod.ts";
 import { gamePath } from "/cli/utils/path.ts"
 import { parse } from "@std/yaml";
 
-const FILTER_OPTION = ["cluster", "placement", "trait", "world"] as const;
-type FilterTuple = typeof FILTER_OPTION;
-type FilterType = FilterTuple[number];
-const filterOption = new EnumType(FILTER_OPTION);
+const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
+type AssetTypeTuple = typeof ASSET_TYPE_OPTION;
+type AssetType = AssetTypeTuple[number];
+const assetTypeOption = new EnumType(ASSET_TYPE_OPTION);
+
+const DLC_OPTION = ["vanilla", "spacedOut", "frostyPlanet"] as const;
+type DlcTuple = typeof DLC_OPTION;
+type DlcType = DlcTuple[number];
+const dlcOption = new EnumType(DLC_OPTION);
 
 const DISPLAY_OPTION = ["key"] as const;
 type DisplayTuple = typeof DISPLAY_OPTION;
@@ -75,8 +80,8 @@ async function parseYaml(): Promise<GameData> {
   return gameData;
 }
 
-function filterData(data: GameData, filter: FilterType): GameData {
-  switch(filter) {
+function filterByAsset(data: GameData, asset: AssetType): GameData {
+  switch(asset) {
     case "trait": {
       break
     }
@@ -86,7 +91,20 @@ function filterData(data: GameData, filter: FilterType): GameData {
     case "cluster": {
       break
     }
-    case "placement": {
+  }
+
+  return data
+}
+
+function filterByDlc(data: GameData, dlc: DlcType): GameData {
+  switch(dlc) {
+    case "vanilla": {
+      break
+    }
+    case "spacedOut": {
+      break
+    }
+    case "frostyPlanet": {
       break
     }
   }
@@ -98,13 +116,13 @@ function selectLevel(data: GameData): GameData {
   return data
 }
 
-function getUniqueKeySet(obj: any): any {
+function getUniqueKeySet(obj: object): object | string {
   if (Array.isArray(obj)) {
     // Process arrays by mapping over elements and showing types
     return obj.length > 0 ? [getUniqueKeySet(obj[0])] : [];
   } else if (typeof obj === "object" && obj !== null) {
     // Process objects by mapping values to keys
-    const uniqueKeys: { [key: string]: any } = {};
+    const uniqueKeys: { [key: string]: object | string } = {};
     for (const key in obj) {
       uniqueKeys[key] = getUniqueKeySet(obj[key]);
     }
@@ -120,14 +138,23 @@ function displayUniqueKeys(data: GameData) {
 
 export const gameSubCommand = new Command()
   .name("export")
-  .description("Parse oni yaml files and output to console")
+  .description("Parse oni yaml files and generate json file")
   // For registering enum type for option
-  .type("filter", filterOption)
+  .type("dlc", dlcOption)
+  .type("asset", assetTypeOption)
   .type("display", displayOption)
   // Options that are applicable for all sub commands
   .option(
     "-d, --display <name:display>",
     "Determine display format",
+  )
+  .option(
+    "--dlc <name:dlc>",
+    "For filtering by dlc type",
+  )
+  .option(
+    "-a, --asset <name:asset>",
+    "For filtering by asset type",
   )
   .option(
     "-t, --test",
@@ -137,17 +164,16 @@ export const gameSubCommand = new Command()
     "-l, --level <level:integer>",
     "For selecting depth of yaml/json file",
   )
-  .option(
-    "-f, --filter <name:filter>",
-    "For filtering the data",
-  )
   .action(async (options) => {
     // Parse yaml file
     let data = await parseYaml()
 
     // Filter parsed data
-    if(options.filter) {
-      data = filterData(data, options.filter)
+    if(options.dlc) {
+      data = filterByDlc(data, options.dlc)
+    }
+    if(options.asset) {
+      data = filterByAsset(data, options.asset)
     }
     if(options.level) {
       data = selectLevel(data)
