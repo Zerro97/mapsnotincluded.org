@@ -103,10 +103,6 @@ function filterByDlc(data: GameData, dlc: DlcType): GameData {
   return data
 }
 
-function selectLevel(data: GameData): GameData {
-  return data
-}
-
 function getUniqueKeySet(obj: object): object | string {
   if (Array.isArray(obj)) {
     // Process arrays by mapping over elements and showing types
