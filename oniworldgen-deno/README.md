@@ -15,3 +15,83 @@
 
 6. `--seed`: For specifying seed while generating trait (generate)
 7. `--trait`: For specifying trait while generating seed (generate)
+
+### Export Info
+Possible useful filters for finding specific seed and counting  number of seeds that matches 
+
+1. Vanilla:
+```ts
+{
+  // less than, more than, equal to
+  operation: {
+    geyser: {geyserType: number}[],
+  }
+  // Seed contains specified element
+  contain: {
+    poi: string[],
+    asteroid: string[],
+    trait: string[]
+  },
+  // Total count
+  geyserCount: number,
+  poiCount: number,
+}
+```
+
+2. FrostyPlanet
+```ts
+{
+  // less than, more than, equal to
+  operation: {
+    geyser: {geyserType: number}[],
+  }
+  // Seed contains specified element
+  contain: {
+    poi: string[],
+    asteroid: string[],
+    trait: string[]
+  },
+  // Total count
+  geyserCount: number,
+  poiCount: number,
+}
+```
+
+3. SpacedOut
+```ts
+{
+  // less than, more than, equal to
+  operation: {
+    geyser: {geyserType: number}[],
+    poi: {poiType: number}[],
+    trait: {traitType: number}[]
+  }
+  // Seed contains specified element
+  contain: {
+    asteroid: string[],
+  },
+  // Total count
+  totalGeyserCount: number,
+  totalPoiCount: number,
+  asteroidCount: number,
+}
+```
+
+4. SpacedOut & FrostyPlanet
+```js
+{
+  // less than, more than, equal to
+  operation: {
+    geyser: {geyserType: number}[],
+    poi: {poiType: number}[],
+    trait: {traitType: number}[]
+  }
+  // Seed contains specified element
+  contain: {
+    asteroid: string[],
+  },
+  // Total count
+  totalGeyserCount: number,
+  totalPoiCount: number,
+  asteroidCount: number,
+}
