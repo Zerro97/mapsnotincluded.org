@@ -157,21 +157,16 @@ export const gameSubCommand = new Command()
   .type("asset", assetTypeOption)
   .type("display", displayOption)
   .option(
-    "-d, --display <name:display>",
+    "-d, --display <display:display>",
     "Determine display format",
   )
   .option(
-    "--dlc <name:dlc>",
+    "--dlc <dlc:dlc>",
     "For filtering by dlc type",
   )
   .option(
-    "-a, --asset <name:asset>",
+    "-a, --asset <asset:asset>",
     "For filtering by asset type",
-  )
-  // TODO!
-  .option(
-    "-t, --test",
-    "Output json useful for testing",
   )
   .action(async (options) => {
     // Parse yaml file
