@@ -1,10 +1,5 @@
 import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 
-const DISPLAY_OPTION = ["key", "count"] as const;
-type DisplayTuple = typeof DISPLAY_OPTION;
-type DisplayType = DisplayTuple[number];
-const displayOption = new EnumType(DISPLAY_OPTION);
-
 async function parseExportJson(filePath: string) {
   try {
     const jsonText = await Deno.readTextFile(filePath);
@@ -19,15 +14,15 @@ async function parseExportJson(filePath: string) {
   }
 }
 
-function getUniqueKeySet(obj: object): object | string {
+function getUniqueKeySet(obj: unknown): object | string {
   if (Array.isArray(obj)) {
-    // Process arrays by mapping over elements and showing types
+    // If it's an array, map over each element to get unique key sets for nested arrays
     return obj.length > 0 ? [getUniqueKeySet(obj[0])] : [];
   } else if (typeof obj === "object" && obj !== null) {
     // Process objects by mapping values to keys
     const uniqueKeys: { [key: string]: object | string } = {};
     for (const key in obj) {
-      uniqueKeys[key] = getUniqueKeySet(obj[key]);
+      uniqueKeys[key] = getUniqueKeySet((obj as Record<string, unknown>)[key]);
     }
     return uniqueKeys;
   }
@@ -36,36 +31,38 @@ function getUniqueKeySet(obj: object): object | string {
 }
 
 function displayUniqueKeys(data: Array<object>) {
-  console.log(getUniqueKeySet(data));
+  console.log(JSON.stringify(getUniqueKeySet(data), null, 2));
+}
+
+function displayCount(data: Array<object>, filters: string[]) {
+  // let filterString = filters.length == 0 ? "none" : filters.join(", ")
+  // console.log(`Seed Count: ${data.length}, Filter: ${filterString}`)
+  console.log(data[0])
 }
 
 export const exportSubCommand = new Command()
   .name("export")
-  .description("Parse mongoDB export data and output to console")
-  .type("display", displayOption)
+  .description("Parse mongoDB export data and output to console. Default to displaying seed count")
   .option(
     "-p, --path <path:string>",
     "File path to export file",
     { required: true }
   )
   .option(
-    "-d, --display <display:display>",
-    "Determine display format",
+    "-s, --schema",
+    "Show schema of export file",
+  )
+  .option(
+    "-f, --filter <filter:filter>",
+    "Filter export data",
+    { conflicts: ["schema"] }
   )
   .action(async (options) => {
     const exportData = await parseExportJson(options.path)
 
-    switch(options.display) {
-      case "key": {
-        displayUniqueKeys(exportData)
-        break
-      }
-      case "count": {
-        break
-      }
-      default: {
-        console.log(exportData)
-        break
-      }
+    if(options.schema) {
+      displayUniqueKeys(exportData)
+    } else {
+      displayCount(exportData, [])
     }
   });

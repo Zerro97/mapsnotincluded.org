@@ -129,15 +129,15 @@ function filterByDlc(data: GameData, dlc: DlcType): GameData {
   return data;
 }
 
-function getUniqueKeySet(obj: object): object | string {
+function getUniqueKeySet(obj: unknown): object | string {
   if (Array.isArray(obj)) {
-    // Process arrays by mapping over elements and showing types
+    // If it's an array, map over each element to get unique key sets for nested arrays
     return obj.length > 0 ? [getUniqueKeySet(obj[0])] : [];
   } else if (typeof obj === "object" && obj !== null) {
     // Process objects by mapping values to keys
     const uniqueKeys: { [key: string]: object | string } = {};
     for (const key in obj) {
-      uniqueKeys[key] = getUniqueKeySet(obj[key]);
+      uniqueKeys[key] = getUniqueKeySet((obj as Record<string, unknown>)[key]);
     }
     return uniqueKeys;
   }
@@ -145,8 +145,8 @@ function getUniqueKeySet(obj: object): object | string {
   return typeof obj;
 }
 
-function displayUniqueKeys(data: GameData) {
-  console.log(getUniqueKeySet(data));
+function displayUniqueKeys(data: Array<object>) {
+  console.log(JSON.stringify(getUniqueKeySet(data), null, 2));
 }
 
 export const gameSubCommand = new Command()
