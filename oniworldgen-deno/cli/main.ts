@@ -1,6 +1,6 @@
 import { Command } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
-import { parseCommand } from "./commands/parse/parse.ts";
-import { infoCommand } from "./commands/info/info.ts";
+import { gameCommand } from "./commands/game/game.ts";
+import { exportCommand } from "./commands/export/export.ts";
 import { generateCommand } from "./commands/generate/generate.ts";
 
 await new Command()
@@ -14,7 +14,7 @@ await new Command()
     this.showHelp();
   })
   // Add different commands
-  .command("info", infoCommand)
-  .command("parse", parseCommand)
+  .command("game", gameCommand)
+  .command("export", exportCommand)
   .command("generate", generateCommand)
   .parse(Deno.args);

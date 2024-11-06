@@ -84,6 +84,7 @@ async function parseYaml(): Promise<GameData> {
               error instanceof SyntaxError &&
               error.message.includes("duplicated key")
             ) {
+              console.error("Error: YAML file contains duplicate keys.");
               continue;
             } else {
               throw new ValidationError("Unhandled exception occured while parsing yaml files");
@@ -92,7 +93,6 @@ async function parseYaml(): Promise<GameData> {
         }
       } catch (error) {
         if (error instanceof Deno.errors.NotFound) {
-          console.error("Error: file not found from specified file path");
           continue;
         } else {
           throw new ValidationError("Unhandled exception occured while reading files");
@@ -143,12 +143,15 @@ function getUniqueKeySet(obj: unknown): object | string {
   return typeof obj;
 }
 
-function displayUniqueKeys(data: Array<object>) {
-  console.log(JSON.stringify(getUniqueKeySet(data), null, 2));
+async function generateUniqueKeys(data: GameData) {
+  const uniqueKeys = getUniqueKeySet(data);
+  // Convert object to JSON string with indentation
+  const jsonString = JSON.stringify(uniqueKeys, null, 2);
+  await Deno.writeTextFile("./data_game_keys.json", jsonString);
 }
 
-export const gameSubCommand = new Command()
-  .name("game")
+export const parseSubCommand = new Command()
+  .name("parse")
   .description("Parse oni yaml files and generate json file")
   // For registering enum type for option
   .type("dlc", dlcOption)
@@ -166,6 +169,11 @@ export const gameSubCommand = new Command()
     "-a, --asset <asset:asset>",
     "For filtering by asset type",
   )
+  .option(
+    // TODO!
+    "-t, --test",
+    "Output json useful for testing",
+  )
   .action(async (options) => {
     // Parse yaml file
     let data = await parseYaml();
@@ -182,11 +190,13 @@ export const gameSubCommand = new Command()
     if (options.display) {
       switch (options.display) {
         case "key": {
-          displayUniqueKeys(data);
+          generateUniqueKeys(data);
           break;
         }
       }
     } else {
-      console.log(data);
+      // Convert object to JSON string with indentation
+      const jsonString = JSON.stringify(data, null, 2);
+      await Deno.writeTextFile("./data_game.json", jsonString);
     }
   });

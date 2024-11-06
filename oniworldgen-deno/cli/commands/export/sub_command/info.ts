@@ -46,8 +46,8 @@ function displayCount(data: Array<object>, filters: string[]) {
   // console.log(data[2].asteroids.map(asteroid => asteroid.id).join(",\n"))
 }
 
-export const exportSubCommand = new Command()
-  .name("export")
+export const infoSubCommand = new Command()
+  .name("info")
   .description("Parse mongoDB export data and output to console. Default to displaying seed count")
   .option(
     "-p, --path <path:string>",
