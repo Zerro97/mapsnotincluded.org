@@ -1,4 +1,4 @@
-import type { GamePath, Path } from "/cli/types/game_data.d.ts";
+import type { GamePath, Path } from "/src/types/game_data.d.ts";
 
 const OS = Deno.build.os;
 let assetDir: string;

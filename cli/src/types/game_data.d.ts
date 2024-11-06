@@ -1,6 +1,6 @@
-import type { TraitData } from "/cli/types/trait_data.d.ts";
-import type { WorldData } from "/cli/types/world_data.d.ts";
-import type { ClusterData } from "/cli/types/cluster_data.d.ts";
+import type { TraitData } from "/src/types/trait_data.d.ts";
+import type { WorldData } from "/src/types/world_data.d.ts";
+import type { ClusterData } from "/src/types/cluster_data.d.ts";
 
 export type DlcType = "vanilla" | "spacedOut" | "frostyPlanet";
 export type InfoType = "trait" | "world" | "cluster";

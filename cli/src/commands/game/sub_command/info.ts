@@ -8,7 +8,7 @@ import {
   EnumType,
   ValidationError,
 } from "cliffy/command/mod.ts";
-import { Entries } from "https://deno.land/x/fest/mod.ts";
+import { Entries } from "typefest/mod.ts";
 import { gamePath } from "/src/utils/path.ts";
 import { parse } from "@std/yaml";
 
