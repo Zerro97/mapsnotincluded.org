@@ -22,16 +22,21 @@ Possible useful filters for finding specific seed and counting  number of seeds 
 1. Vanilla:
 ```ts
 {
-  // less than, more than, equal to
-  operation: {
-    geyser: {geyserType: number}[],
-  }
-  // Seed contains specified element
-  contain: {
+  // Seeds that contain specified element
+  equal: {
+    geyser: string[],
     poi: string[],
     asteroid: string[],
     trait: string[]
   },
+  // Seeds that contain more than specified element count
+  moreThan: {
+    geyser: {geyserType: number}[],
+  }
+  // Seeds that contain less than specified element count
+  lessThan: {
+    geyser: {geyserType: number}[],
+  }
   // Total count
   geyserCount: number,
   poiCount: number,
@@ -41,16 +46,21 @@ Possible useful filters for finding specific seed and counting  number of seeds 
 2. FrostyPlanet
 ```ts
 {
-  // less than, more than, equal to
-  operation: {
-    geyser: {geyserType: number}[],
-  }
-  // Seed contains specified element
-  contain: {
+  // Seeds that contain specified element
+  equal: {
+    geyser: string[],
     poi: string[],
     asteroid: string[],
     trait: string[]
   },
+  // Seeds that contain more than specified element count
+  moreThan: {
+    geyser: {geyserType: number}[],
+  }
+  // Seeds that contain less than specified element count
+  lessThan: {
+    geyser: {geyserType: number}[],
+  }
   // Total count
   geyserCount: number,
   poiCount: number,
@@ -60,15 +70,24 @@ Possible useful filters for finding specific seed and counting  number of seeds 
 3. SpacedOut
 ```ts
 {
-  // less than, more than, equal to
-  operation: {
+  // Seeds that contain more than specified element count
+  moreThan: {
     geyser: {geyserType: number}[],
     poi: {poiType: number}[],
     trait: {traitType: number}[]
   }
-  // Seed contains specified element
+  // Seeds that contain less than specified element count
+  lessThan: {
+    geyser: {geyserType: number}[],
+    poi: {poiType: number}[],
+    trait: {traitType: number}[]
+  }
+  // Seeds contains specified element
   contain: {
+    geyser: string[],
+    poi: string[],
     asteroid: string[],
+    trait: string[]
   },
   // Total count
   totalGeyserCount: number,
@@ -80,15 +99,24 @@ Possible useful filters for finding specific seed and counting  number of seeds 
 4. SpacedOut & FrostyPlanet
 ```js
 {
-  // less than, more than, equal to
-  operation: {
+  // Seeds that contain more than specified element count
+  moreThan: {
     geyser: {geyserType: number}[],
     poi: {poiType: number}[],
     trait: {traitType: number}[]
   }
-  // Seed contains specified element
+  // Seeds that contain less than specified element count
+  lessThan: {
+    geyser: {geyserType: number}[],
+    poi: {poiType: number}[],
+    trait: {traitType: number}[]
+  }
+  // Seeds contains specified element
   contain: {
+    geyser: string[],
+    poi: string[],
     asteroid: string[],
+    trait: string[]
   },
   // Total count
   totalGeyserCount: number,
