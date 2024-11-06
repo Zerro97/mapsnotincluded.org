@@ -1,15 +1,15 @@
-import type { GameData } from "/cli/types/game_data.d.ts";
-import type { TraitData } from "/cli/types/trait_data.d.ts";
-import type { ClusterData } from "/cli/types/cluster_data.d.ts";
-import type { WorldData } from "/cli/types/world_data.d.ts";
+import type { GameData } from "/src/types/game_data.d.ts";
+import type { TraitData } from "/src/types/trait_data.d.ts";
+import type { ClusterData } from "/src/types/cluster_data.d.ts";
+import type { WorldData } from "/src/types/world_data.d.ts";
 
 import {
   Command,
   EnumType,
   ValidationError,
-} from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
+} from "cliffy/command/mod.ts";
 import { Entries } from "https://deno.land/x/fest/mod.ts";
-import { gamePath } from "/cli/utils/path.ts";
+import { gamePath } from "/src/utils/path.ts";
 import { parse } from "@std/yaml";
 
 const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
