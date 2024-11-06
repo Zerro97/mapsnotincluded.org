@@ -1,7 +1,7 @@
 import type { GameData } from "/src/types/game_data.d.ts";
 
 import { Command, EnumType } from "@cliffy/command";
-import { parseYaml } from "/src/parser/parseYaml.ts";
+import { parseYaml } from "../../../utils/parser/parseYaml.ts";
 
 const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
 type AssetTypeTuple = typeof ASSET_TYPE_OPTION;
