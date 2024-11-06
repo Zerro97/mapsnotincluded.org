@@ -1,7 +1,7 @@
-import { Command } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
-import { gameCommand } from "./commands/game/game.ts";
-import { exportCommand } from "./commands/export/export.ts";
-import { generateCommand } from "./commands/generate/generate.ts";
+import { Command } from "@cliffy/command";
+import { yamlCommand } from "./commands/yaml/yaml.ts";
+import { exportCommand } from "/src/commands/export/export.ts";
+import { generateCommand } from "/src/commands/generate/generate.ts";
 
 await new Command()
   .name("oni")
@@ -14,7 +14,7 @@ await new Command()
     this.showHelp();
   })
   // Add different commands
-  .command("game", gameCommand)
+  .command("yaml", yamlCommand)
   .command("export", exportCommand)
   .command("generate", generateCommand)
   .parse(Deno.args);

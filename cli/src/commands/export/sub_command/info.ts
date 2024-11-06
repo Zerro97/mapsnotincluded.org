@@ -1,4 +1,6 @@
-import { Command, EnumType, ValidationError } from "cliffy/command/mod.ts";
+import { Command, EnumType, ValidationError } from "@cliffy/command";
+import { colors } from "@cliffy/ansi/colors";
+import { Input } from "@cliffy/prompt/input";
 
 async function parseExportJson(filePath: string) {
   try {
@@ -64,11 +66,15 @@ export const infoSubCommand = new Command()
     { conflicts: ["schema"] }
   )
   .action(async (options) => {
-    const exportData = await parseExportJson(options.path)
+    const result: string = await Input.prompt({
+      message: "Specify file path to mongoDB export file",
+      pointer: colors.bold.brightBlue("-->"),
+    });
+    // const exportData = await parseExportJson(options.path)
 
-    if(options.schema) {
-      displayUniqueKeys(exportData)
-    } else {
-      displayCount(exportData, [])
-    }
+    // if(options.schema) {
+    //   displayUniqueKeys(exportData)
+    // } else {
+    //   displayCount(exportData, [])
+    // }
   });

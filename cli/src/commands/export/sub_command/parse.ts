@@ -1,4 +1,4 @@
-import { Command } from "cliffy/command/mod.ts";
+import { Command } from "@cliffy/command";
 
 export const parseSubCommand = new Command()
   .name("parse")
