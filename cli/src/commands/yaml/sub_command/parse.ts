@@ -1,16 +1,7 @@
 import type { GameData } from "/src/types/game_data.d.ts";
-import type { TraitData } from "/src/types/trait_data.d.ts";
-import type { ClusterData } from "/src/types/cluster_data.d.ts";
-import type { WorldData } from "/src/types/world_data.d.ts";
 
-import {
-  Command,
-  EnumType,
-  ValidationError,
-} from "@cliffy/command";
-import { Entries } from "@typefest/mod.ts";
-import { gamePath } from "/src/utils/path.ts";
-import { parse } from "@std/yaml";
+import { Command, EnumType } from "@cliffy/command";
+import { parseYaml } from "/src/parser/parseYaml.ts";
 
 const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
 type AssetTypeTuple = typeof ASSET_TYPE_OPTION;
@@ -26,83 +17,6 @@ const DISPLAY_OPTION = ["key"] as const;
 type DisplayTuple = typeof DISPLAY_OPTION;
 type DisplayType = DisplayTuple[number];
 const displayOption = new EnumType(DISPLAY_OPTION);
-
-async function parseYaml(): Promise<GameData> {
-  const gameData: GameData = {
-    cluster: {
-      vanilla: [] as ClusterData[],
-      spacedOut: [] as ClusterData[],
-      frostyPlanet: [] as ClusterData[],
-    },
-    world: {
-      vanilla: [] as WorldData[],
-      spacedOut: [] as WorldData[],
-      frostyPlanet: [] as WorldData[],
-    },
-    trait: {
-      vanilla: [] as TraitData[],
-      spacedOut: [] as TraitData[],
-      frostyPlanet: [] as TraitData[],
-    },
-  };
-
-  // Loop through world, trait, cluster
-  for (
-    const [infoType, outerPath] of Object.entries(gamePath) as Entries<
-      typeof gamePath
-    >
-  ) {
-    // Loop through vanilla, spacedOut, frostyPlanet
-    for (
-      const [dlcType, innerPath] of Object.entries(outerPath) as Entries<
-        typeof outerPath
-      >
-    ) {
-      try {
-        // Loop through files in directory
-        for await (const entry of Deno.readDir(innerPath.path)) {
-          // Read yaml file
-          const filePath = `${innerPath.path}/${entry.name}`;
-          const yamlFile = await Deno.readTextFile(filePath);
-
-          try {
-            // Assign parsed yaml
-            switch (infoType) {
-              case "trait":
-                gameData.trait[dlcType].push(parse(yamlFile) as TraitData);
-                break;
-              case "world":
-                gameData.world[dlcType].push(parse(yamlFile) as WorldData);
-                break;
-              case "cluster":
-                gameData.cluster[dlcType].push(parse(yamlFile) as ClusterData);
-                break;
-            }
-          } catch (error) {
-            // Some yaml files contain duplicate keys causing parsing error
-            if (
-              error instanceof SyntaxError &&
-              error.message.includes("duplicated key")
-            ) {
-              console.error("Error: YAML file contains duplicate keys.");
-              continue;
-            } else {
-              throw new ValidationError("Unhandled exception occured while parsing yaml files");
-            }
-          }
-        }
-      } catch (error) {
-        if (error instanceof Deno.errors.NotFound) {
-          continue;
-        } else {
-          throw new ValidationError("Unhandled exception occured while reading files");
-        }
-      }
-    }
-  }
-
-  return gameData;
-}
 
 function filterByAsset(data: GameData, asset: AssetType): GameData {
   for (const key in data) {
@@ -197,6 +111,6 @@ export const parseSubCommand = new Command()
     } else {
       // Convert object to JSON string with indentation
       const jsonString = JSON.stringify(data, null, 2);
-      await Deno.writeTextFile("./data_game.json", jsonString);
+      await Deno.writeTextFile("./game_data.json", jsonString);
     }
   });

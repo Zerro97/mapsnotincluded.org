@@ -1,19 +1,17 @@
 import { Command, EnumType, ValidationError } from "@cliffy/command";
 import { colors } from "@cliffy/ansi/colors";
 import { Checkbox, Select, Input, Number, prompt } from "@cliffy/prompt";
+import { parseJson } from "./src/parser/parseJson.ts";
 
-async function parseExportJson(filePath: string) {
-  try {
-    const jsonText = await Deno.readTextFile(filePath);
-    return JSON.parse(jsonText);
-  } catch(error) {
-    if (error instanceof Deno.errors.NotFound) {
-      throw new ValidationError("File not found from specified file path");
-    } else {
-      throw new ValidationError("Unhandled exception occured while reading file");
-    }
-  }
-}
+const vanillaCluster = []
+const frostyPlanetCluster = []
+const spacedOutCluster = []
+
+const vanillaGeysers = []
+const frostyPlanetGeysers = []
+const spacedOutGeysers = []
+
+const vanillaTraits = []
 
 function getUniqueKeySet(obj: unknown): object | string {
   if (Array.isArray(obj)) {
@@ -261,14 +259,13 @@ export const infoSubCommand = new Command()
           await next("path");
         } else {
           try {
-            const content = await Deno.readTextFile(path);
-            exportContent = JSON.parse(content);
+            exportContent = await parseJson(path);
             await next();
           } catch(error) {
             if (error instanceof Deno.errors.NotFound) {
               console.error("File does not exist. Please specify valid file path");
               await next("path");
-          } else if (error instanceof SyntaxError) {
+            } else if (error instanceof SyntaxError) {
               console.error("Invalid JSON format. Please specify valid file path");
               await next("path");
             } else {
@@ -290,21 +287,4 @@ export const infoSubCommand = new Command()
     } else {
       promptVanilla()
     }
-
-    // , {
-    //   name: "dlc_geyser_filter",
-    //   message: "",
-    //   type: Checkbox,
-    //   options: [
-
-    //   ],
-    // }
-
-    // const exportData = await parseExportJson(options.path)
-
-    // if(options.schema) {
-    //   displayUniqueKeys(exportData)
-    // } else {
-    //   displayCount(exportData, [])
-    // }
   });
