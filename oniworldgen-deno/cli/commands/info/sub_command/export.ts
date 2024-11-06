@@ -1,4 +1,4 @@
-import { Command, EnumType } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
+import { Command, EnumType, ValidationError } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 
 async function parseExportJson(filePath: string) {
   try {
@@ -6,10 +6,9 @@ async function parseExportJson(filePath: string) {
     return JSON.parse(jsonText);
   } catch(error) {
     if (error instanceof Deno.errors.NotFound) {
-      console.error("Error: file not found from specified file path");
+      throw new ValidationError("File not found from specified file path");
     } else {
-      console.error(error);
-      Deno.exit();
+      throw new ValidationError("Unhandled exception occured while reading file");
     }
   }
 }
@@ -37,7 +36,14 @@ function displayUniqueKeys(data: Array<object>) {
 function displayCount(data: Array<object>, filters: string[]) {
   // let filterString = filters.length == 0 ? "none" : filters.join(", ")
   // console.log(`Seed Count: ${data.length}, Filter: ${filterString}`)
-  console.log(data[0])
+  // data.forEach((seed, index) => {
+  //   if(seed.dlcs.includes("SpacedOut") && index < 20){
+  //     // console.log(seed.asteroids.map(asteroid => asteroid.pointsOfInterest.length).join(", "))
+  //     console.log(seed.asteroids.map(asteroid => asteroid.pointsOfInterest))
+  //   }
+  // })
+  // console.log(data[2].dlcs)
+  // console.log(data[2].asteroids.map(asteroid => asteroid.id).join(",\n"))
 }
 
 export const exportSubCommand = new Command()

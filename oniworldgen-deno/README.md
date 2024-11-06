@@ -82,7 +82,7 @@ Possible useful filters for finding specific seed and counting  number of seeds 
     poi: {poiType: number}[],
     trait: {traitType: number}[]
   }
-  // Seeds contains specified element
+  // Seeds that contains specified element
   contain: {
     geyser: string[],
     poi: string[],
@@ -111,7 +111,7 @@ Possible useful filters for finding specific seed and counting  number of seeds 
     poi: {poiType: number}[],
     trait: {traitType: number}[]
   }
-  // Seeds contains specified element
+  // Seeds that contains specified element
   contain: {
     geyser: string[],
     poi: string[],
@@ -123,3 +123,38 @@ Possible useful filters for finding specific seed and counting  number of seeds 
   totalPoiCount: number,
   asteroidCount: number,
 }
+```
+
+### Examples
+Getting export schema:
+```bash
+oni export info --path ./data.json --s
+```
+
+Getting seeds that matches filter:
+```bash
+oni export info --path ./data.json --dlc frostyPlanet spacedOut --filter { \
+  moreThan: { \
+    geyser: { \
+      "volcano": 5 \
+    }, \
+    trait: { \
+      "metalRich": 2 \
+    } \
+  } \
+} \
+```
+
+Getting seed count in export that matches filter:
+```bash
+oni export info --path ./data.json --dlc frostyPlanet spacedOut --count --filter { \
+  moreThan: { \
+    geyser: { \
+      "volcano": 5 \
+    }, \
+    trait: { \
+      "metalRich": 2 \
+    } \
+  } \
+} \
+```

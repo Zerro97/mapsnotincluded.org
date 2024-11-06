@@ -6,6 +6,7 @@ import type { WorldData } from "/cli/types/world_data.d.ts";
 import {
   Command,
   EnumType,
+  ValidationError,
 } from "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts";
 import { Entries } from "https://deno.land/x/fest/mod.ts";
 import { gamePath } from "/cli/utils/path.ts";
@@ -83,11 +84,9 @@ async function parseYaml(): Promise<GameData> {
               error instanceof SyntaxError &&
               error.message.includes("duplicated key")
             ) {
-              console.error("Error: YAML file contains duplicate keys.");
               continue;
             } else {
-              console.error(error);
-              Deno.exit();
+              throw new ValidationError("Unhandled exception occured while parsing yaml files");
             }
           }
         }
@@ -96,8 +95,7 @@ async function parseYaml(): Promise<GameData> {
           console.error("Error: file not found from specified file path");
           continue;
         } else {
-          console.error(error);
-          Deno.exit();
+          throw new ValidationError("Unhandled exception occured while reading files");
         }
       }
     }
