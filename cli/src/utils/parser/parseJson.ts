@@ -1,5 +1,3 @@
-import { ValidationError } from "@cliffy/command";
-
 /**
  * Parses mongoDB export file
  * 

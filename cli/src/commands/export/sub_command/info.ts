@@ -1,7 +1,7 @@
 import { Command, EnumType, ValidationError } from "@cliffy/command";
 import { colors } from "@cliffy/ansi/colors";
 import { Checkbox, Select, Input, Number, prompt } from "@cliffy/prompt";
-import { parseJson } from "./src/parser/parseJson.ts";
+import { parseJson } from "/src/parser/parseJson.ts";
 
 const vanillaCluster = []
 const frostyPlanetCluster = []

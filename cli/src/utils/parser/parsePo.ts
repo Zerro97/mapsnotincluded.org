@@ -1,5 +1,4 @@
 import poParser from "npm:gettext-parser";
-import { ValidationError } from "@cliffy/command";
 
 /**
  * Parses text strings from po file

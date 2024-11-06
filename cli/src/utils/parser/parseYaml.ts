@@ -5,7 +5,7 @@ import type { WorldData } from "/src/types/world_data.d.ts";
 
 import { ValidationError } from "@cliffy/command";
 import { Entries } from "@typefest/mod.ts";
-import { gamePath } from "/src/utils/path.ts";
+import { gamePath } from "../constants/path.ts";
 import { parse } from "@std/yaml";
 
 /**
