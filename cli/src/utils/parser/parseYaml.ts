@@ -5,15 +5,41 @@ import type { WorldData } from "/src/types/world_data.d.ts";
 
 import { ValidationError } from "@cliffy/command";
 import { Entries } from "@typefest/mod.ts";
-import { gamePath } from "../constants/path.ts";
+import { getGamePath } from "../path.ts";
 import { parse } from "@std/yaml";
+
+async function checkFilePath(path: string) {
+  // Check if given file path is directory
+  const stat = await Deno.stat(path);
+  if (!stat.isDirectory) {
+    throw new Deno.errors.InvalidData("The specified path is not a directory.");
+  }
+
+  // Check if directory contains following required directories
+  const requiredDirs = new Set(["dlc", "codex", "worldgen", "strings"]);
+  for await (const entry of Deno.readDir(path)) {
+    if (entry.isDirectory) requiredDirs.delete(entry.name);
+  }
+  if (requiredDirs.size > 0) {
+    throw new Deno.errors.InvalidData(
+      "Given file path is not oni streaming assets folder"
+    );
+  }
+}
 
 /**
  * Parses game yaml files
  * 
  * @returns parsed yaml object
  */
-export async function parseYaml(): Promise<GameData> {
+export async function parseYaml(filePath: string): Promise<GameData> {
+  // Check if valid file path. Throw error if not
+  await checkFilePath(filePath)
+
+  // Get different game path based on given base path
+  const gamePath = getGamePath(filePath)
+
+  // Create empty gameData for storing parsed data
   const gameData: GameData = {
     cluster: {
       vanilla: [] as ClusterData[],
@@ -64,7 +90,7 @@ export async function parseYaml(): Promise<GameData> {
             ) {
               continue;
             } else {
-              throw new ValidationError("Unhandled exception occured while parsing yaml files");
+              throw error;
             }
           }
         }
@@ -73,7 +99,7 @@ export async function parseYaml(): Promise<GameData> {
           // If specified file path does not exists
           continue;
         } else {
-          throw new ValidationError("Unhandled exception occured while reading files");
+          throw error;
         }
       }
     }

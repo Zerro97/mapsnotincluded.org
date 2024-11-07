@@ -1,17 +1,6 @@
-import { Command, EnumType, ValidationError } from "@cliffy/command";
-import { colors } from "@cliffy/ansi/colors";
+import { Command } from "@cliffy/command";
 import { Checkbox, Select, Input, Number, prompt } from "@cliffy/prompt";
 import { parseJson } from "../../../utils/parser/parseJson.ts";
-
-const vanillaCluster = []
-const frostyPlanetCluster = []
-const spacedOutCluster = []
-
-const vanillaGeysers = []
-const frostyPlanetGeysers = []
-const spacedOutGeysers = []
-
-const vanillaTraits = []
 
 function getUniqueKeySet(obj: unknown): object | string {
   if (Array.isArray(obj)) {
@@ -111,27 +100,7 @@ async function promptSpacedOut() {
   const geyserList = await Checkbox.prompt({
     message: "Select geyser",
     options: [
-      "cool steam vent",
-      "hot steam vent",
-      "water geyser",
-      "cool slush geyser",
-      "polluted water vent",
-      "cool salt slush geyser",
-      "salt water geyser",
-      "minor volcano",
-      "volcano",
-      "carbon dioxide geyser",
-      "carbon dioxide vent",
-      "hydrogen vent",
-      "hot polluted oxygen vent",
-      "infectious polluted oxygen vent",
-      "chlorine gas vent",
-      "natural gas geyser",
-      "copper volcano",
-      "iron volcano",
-      "gold volcano",
-      "leaky oil fissure",
-      "oil reservoir",
+
     ],
   })
 

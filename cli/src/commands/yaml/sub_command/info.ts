@@ -1,10 +1,12 @@
 import type { GameData } from "/src/types/game_data.d.ts";
+import { Checkbox, Select, Input, Number, prompt } from "@cliffy/prompt";
 
 import {
   Command,
   EnumType,
 } from "@cliffy/command";
 import { parseYaml } from "../../../utils/parser/parseYaml.ts";
+import { getSuggestedBasePath } from "/src/utils/path.ts";
 
 const ASSET_TYPE_OPTION = ["cluster", "trait", "world"] as const;
 type AssetTypeTuple = typeof ASSET_TYPE_OPTION;
@@ -85,25 +87,57 @@ export const infoSubCommand = new Command()
   )
   .action(async (options) => {
     // Parse yaml file
-    let data = await parseYaml();
+    const suggestedBasePath = getSuggestedBasePath()
+    let parsedData = null
 
-    // Filter parsed data
-    if (options.dlc) {
-      data = filterByDlc(data, options.dlc);
-    }
-    if (options.asset) {
-      data = filterByAsset(data, options.asset);
-    }
-
-    // Display data
-    if (options.display) {
-      switch (options.display) {
-        case "key": {
-          displayUniqueKeys(data);
-          break;
+    const result = await prompt([{
+      name: "path",
+      files: true,
+      message: "Specify relative path to oni streaming assets folder",
+      default: suggestedBasePath,
+      suggestions: [suggestedBasePath],
+      type: Input,
+      after: async ({ path }, next) => { 
+        if(!path) {
+          console.log("Please specify file path")
+          await next("path");
+        } else {
+          try {
+            parsedData = await parseYaml(path);
+            await next();
+          } catch(error) {
+            if (error instanceof Deno.errors.NotFound) {
+              console.error("Folder does not exist. Please specify valid file path");
+              await next("path");
+            } else if (error instanceof Deno.errors.InvalidData) {
+              console.error("Given file path is not oni streaming assets folder. Please specify valid file path");
+              await next("path");
+            } else {
+              console.error(error);
+              await next("path");
+            }
+          }
         }
       }
-    } else {
-      console.log(data);
-    }
+    }])
   });
+
+      // // Filter parsed data
+      // if (options.dlc) {
+      //   data = filterByDlc(data, options.dlc);
+      // }
+      // if (options.asset) {
+      //   data = filterByAsset(data, options.asset);
+      // }
+  
+      // // Display data
+      // if (options.display) {
+      //   switch (options.display) {
+      //     case "key": {
+      //       displayUniqueKeys(data);
+      //       break;
+      //     }
+      //   }
+      // } else {
+      //   console.log(data);
+      // }
