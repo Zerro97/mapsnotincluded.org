@@ -17,6 +17,7 @@ defaults:
 
 jobs:
   build:
+    if: ${{ github.repository == 'barratt/mapsnotincluded.org' }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4

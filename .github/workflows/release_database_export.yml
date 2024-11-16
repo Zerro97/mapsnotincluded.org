@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   export_database:
+    if: ${{ github.repository == 'barratt/mapsnotincluded.org' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
